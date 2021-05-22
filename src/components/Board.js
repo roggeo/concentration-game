@@ -1,62 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
+import {
+    restoreCards,
+    configureSelectedCard,
+    configureCardsMatched
+} from "./../services/BoardConfigures";
 import Card from "./Card";
-
-
-function configureSelectedCard(cardsPlaying, id) {
-    const filterCards = [];
-
-    cardsPlaying.forEach((cards) => {
-        const filterCard = [];
-        cards.forEach((card) => {
-            const c = {...card};
-            if (c.id == id) {
-                c.selected = true;
-            }
-            filterCard.push(c);
-        });
-        filterCards.push(filterCard);
-    });
-
-    return filterCards;
-}
-
-function configureCardsMatched(cardsPlaying, ids = []) {
-    const filterCards = [];
-
-    cardsPlaying.forEach((cards) => {
-        const filterCard = [];
-        cards.forEach((card) => {
-            const c = {...card};
-            if (ids.includes(c.id)) {
-                c.selected = false;
-                c.done = true;
-            }
-            filterCard.push(c);
-        });
-        filterCards.push(filterCard);
-    });
-
-    return filterCards;
-}
-
-function restoreCards(cardsPlaying, ids = []) {
-    const filterCards = [];
-
-    cardsPlaying.forEach((cards) => {
-        const filterCard = [];
-        cards.forEach((card) => {
-            const c = {...card};
-            if (ids.includes(c.id)) {
-                c.selected = false;
-            }
-            filterCard.push(c);
-        });
-        filterCards.push(filterCard);
-    });
-
-    return filterCards;
-}
 
 
 function Board({
