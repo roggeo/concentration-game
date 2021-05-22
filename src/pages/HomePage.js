@@ -1,5 +1,9 @@
 import React from "react";
+import Board from "../components/Board";
+import { cardsOptions } from "../services/cards";
 
 export default function HomePage() {
-    return <div>Home page</div>
+    return <React.Fragment>
+        <Board cardsOriginal={cardsOptions()}/>
+    </React.Fragment>
 }
