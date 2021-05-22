@@ -31,6 +31,18 @@ function Board({
         setCardsPlaying(configureCardsMatched(cardsPlaying, cards));
     }
 
+    const prepareCardOverSelection = (cardBoard) => {
+        if (cardSelected.id === cardBoard.id) {
+            return;
+        }
+        if (cardSelected.image == cardBoard.image) {
+            setCardsMatching([cardBoard.id, cardSelected.id]);
+        } else {
+            resetCardsNoMatched([cardBoard.id, cardSelected.id]);
+        }
+        setCardSelected(null);
+    }
+
     const onClinkCard = (cardBoard) => (e) => {
         e.preventDefault();
         
@@ -39,15 +51,8 @@ function Board({
         if (cardSelected === null) {
             setCardSelected(cardBoard);
         } else {
-            if (cardSelected.image == cardBoard.image) {
-                setCardsMatching([cardBoard.id, cardSelected.id]);
-            } else {
-                resetCardsNoMatched([cardBoard.id, cardSelected.id]);
-            }
-
-            setCardSelected(null);
+            prepareCardOverSelection(cardBoard);
         }
-
     }
 
     const renderCardsCol = (card, index) => {
