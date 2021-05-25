@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "spec": "jest",
+    "spec": "jest --verbose",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "sass": "sass src/assets:src/assets --watch --no-source-map"
@@ -26,6 +26,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest"
   },
   "browserslist": {
     "production": [
@@ -41,8 +44,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
     "babel-jest": "^26.6.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2016": "^6.24.1",
     "eslint": "^7.26.0",
     "eslint-plugin-react": "^7.23.2",
     "sass": "^1.32.13"
