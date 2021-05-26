@@ -25,8 +25,18 @@ export function getIndexRandomFromValues(values) {
  * Get pairs of cards image
  * @returns {Array}
  */
-export function getPairsOfCards() {
-    const cardsImage = [...cardsOptions()];
+export function getPairsOfCards(size=0, listCards = []) {
+    const cardsImage = [];
+
+    let i = 0;
+    for (const card of listCards) {
+        if (i == size) {
+            break;
+        }
+        cardsImage.push(card);
+        i++;
+    }
+
     return cardsImage.concat(cardsImage);
 }
 
@@ -35,8 +45,8 @@ export function getPairsOfCards() {
  * Get random of cards image
  * @returns {Array}
  */
-export function getRandomPairsOfCards() {
-    const pairs = getPairsOfCards();
+export function getRandomPairsOfCards(size) {
+    const pairs = getPairsOfCards(size, cardsOptions());
     const preparedRandom = new Array(pairs.length).fill(null);
 
     for (const cardImg of pairs) {
@@ -72,7 +82,8 @@ export function createCardOption(id=0, img='') {
  */
  export function getCardsMatrix(lin = 0, col = 0) {
 
-    const cardsImage = getRandomPairsOfCards();
+    const size = Math.floor((lin * col) / 2)
+    const cardsImage = getRandomPairsOfCards(size);
     const cardsPrepared = [];
     let linValues = [];
 
@@ -81,9 +92,10 @@ export function createCardOption(id=0, img='') {
     let idGenerated = 1;
     let sizeCardsImage = cardsImage.length;
 
+
     for (const imgCard of cardsImage) {
 
-        if (linLimit > lin || index == sizeCardsImage - 1) {
+        if (linLimit > lin) {
             linLimit = 1;
             cardsPrepared.push(linValues);
             linValues = [];
@@ -93,13 +105,13 @@ export function createCardOption(id=0, img='') {
             linValues.push(createCardOption(idGenerated, imgCard));
             linLimit++;
         }
-
-        if (col == cardsPrepared.length) {
-            break;
-        }
         
         idGenerated++;
         index++;
+
+        if (index == sizeCardsImage) {
+            cardsPrepared.push(linValues);
+        }
     }
     
     return cardsPrepared;
