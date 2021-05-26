@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { CardContext } from "../context/cardContext";
 import {
     restoreCards,
     configureSelectedCard,
@@ -8,17 +8,10 @@ import {
 import Card from "./Card";
 
 
-function Board({
-    cardsOriginal
-}) {
+function Board() {
 
     const [cardSelected, setCardSelected] = useState(null);
-    const [cardsPlaying, setCardsPlaying] = useState([]);
-
-    useEffect(() => {
-        setCardsPlaying(cardsOriginal);
-    }, []);
-
+    const [cardsPlaying, setCardsPlaying] = useContext(CardContext);
 
     const resetCardsNoMatched = (cards) => {
         if (cards.length == 0) {
@@ -66,10 +59,6 @@ function Board({
     return <div id="ContainerBoard">
         {cardsPlaying.map(renderCardsRow)}
     </div>
-}
-
-Board.propTypes = {
-    cardsOriginal: PropTypes.array
 }
 
 export default Board;

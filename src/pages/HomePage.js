@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React, {useState} from "react";
 import Board from "../components/Board";
 import SupportBar from "../components/SupportBar";
 import { CardContext } from "../context/cardContext";
-
+import { getCardsMatrix } from "../services/CardTransform";
 
 export default function HomePage() {
 
-    const cardsOptions = useContext(CardContext);
+    const stateCards = useState(getCardsMatrix(4, 3));
 
-    return <React.Fragment>
+    return <CardContext.Provider value={stateCards}>
         <SupportBar/>
-        <Board cardsOriginal={cardsOptions}/>
-    </React.Fragment>
+        <Board/>
+    </CardContext.Provider>
 }
