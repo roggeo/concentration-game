@@ -93,6 +93,10 @@ export function createCardOption(id=0, img='') {
             linValues.push(createCardOption(idGenerated, imgCard));
             linLimit++;
         }
+
+        if (col == cardsPrepared.length) {
+            break;
+        }
         
         idGenerated++;
         index++;

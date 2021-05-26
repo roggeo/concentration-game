@@ -9,10 +9,13 @@ test('Get pairs of cards', () => {
     expect(sizeCards * 2).toBe(getPairsOfCards().length);
 });
 
-test('Transfrom cards into matrix', () => {
+test('Transfrom cards into matrix 4 x 4', () => {
     
-    const cardsMatrix = getCardsMatrix(4, 8);
-    const lengthMatrix = cardsMatrix[0].length;
+    const cardsMatrix = getCardsMatrix(4, 4);
+    const widthMatrix = cardsMatrix[0].length;
+    const heightMatrix = cardsMatrix.length;
 
-    expect(lengthMatrix).toBe(4);
+    expect(widthMatrix).toBe(4);
+    expect(heightMatrix).toBe(4);
+
 });
