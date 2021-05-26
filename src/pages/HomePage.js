@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Board from "../components/Board";
 import SupportBar from "../components/SupportBar";
-import { cardsOptions } from "../services/cards";
+import { CardContext } from "../context/cardContext";
+
 
 export default function HomePage() {
+
+    const cardsOptions = useContext(CardContext);
+
     return <React.Fragment>
         <SupportBar/>
-        <Board cardsOriginal={cardsOptions()}/>
+        <Board cardsOriginal={cardsOptions}/>
     </React.Fragment>
 }
