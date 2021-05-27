@@ -15,8 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "spec": "jest --verbose",
+    "test": "jest --verbose",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "sass": "sass src/assets:src/assets --watch --no-source-map"
