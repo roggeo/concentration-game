@@ -5,6 +5,7 @@ import SupportNewBoard from "./SupportNewBoard";
 import SupportShowCards from "./SupportShowCards";
 import { getCardsMatrix } from "../services/CardTransform";
 import { CardContext } from "../context/cardContext";
+import { BOARD_SIZE_INITIAL } from "../utils/constants";
 
 
 function SupportBar() {
@@ -15,10 +16,14 @@ function SupportBar() {
         setCardsOptions(getCardsMatrix(h, w));
     }
 
+    const onNewBoard = () => {
+        setCardsOptions(getCardsMatrix(BOARD_SIZE_INITIAL.width, BOARD_SIZE_INITIAL.height));
+    }
+
     return <div>
         <SupportInputSizeBoard onResizeBoard={onResizeBoard}/>
         <SupportChronometer/>
-        <SupportNewBoard/>
+        <SupportNewBoard onNewBoard={onNewBoard}/>
         <SupportShowCards/>
     </div>
 }
