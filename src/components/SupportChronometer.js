@@ -5,7 +5,7 @@ import secondsToString from "../utils/secondsToString";
 function SupportChronometer({
     liveTimer
 }) {
-    return <div>
+    return <div className="container-chronometer">
         <span>{secondsToString(liveTimer)}</span>
     </div>
 }

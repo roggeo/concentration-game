@@ -4,7 +4,7 @@ import React from "react";
 function SupportNewBoard({
     onNewBoard
 }) {
-    return <div><button onClick={onNewBoard}>New Board</button></div>
+    return <div><button onClick={onNewBoard}>New</button></div>
 }
 
 SupportNewBoard.propTypes = {

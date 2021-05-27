@@ -42,9 +42,9 @@ function SupportBar() {
         }
     }, [liveTimer]);
 
-    return <div>
-        <SupportInputSizeBoard onResizeBoard={onResizeBoard}/>
+    return <div id="ContainerSupportBar">
         <SupportChronometer liveTimer={liveTimer}/>
+        <SupportInputSizeBoard onResizeBoard={onResizeBoard}/>
         <SupportNewBoard onNewBoard={onNewBoard}/>
         <SupportShowCards onShowCards={onShowCards} times={timesShowingCards}/>
     </div>

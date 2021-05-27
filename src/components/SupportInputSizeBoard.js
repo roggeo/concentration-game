@@ -36,7 +36,7 @@ function SupportInputSizeBoard({
             value={boardHeight}
             onChange={handleBoardHeight}
         />
-        <button onClick={onResizeBoard(boardWidth, boardHeight)}>Confirm size</button>
+        <button onClick={onResizeBoard(boardWidth, boardHeight)}>Resize</button>
     </div>
 }
 
