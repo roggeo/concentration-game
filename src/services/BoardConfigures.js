@@ -3,6 +3,23 @@
  */
 
 
+export function configureSelectionAllCards(cardsPlaying = [], selected = false) {
+    const filterCards = [];
+
+    cardsPlaying.forEach((cards) => {
+        const filterCard = [];
+        cards.forEach((card) => {
+            const c = {...card};
+            c.selected = selected;
+            filterCard.push(c);
+        });
+        filterCards.push(filterCard);
+    });
+
+    return filterCards;
+}
+
+
 /**
  * 
  * @param {Array} cardsPlaying 
