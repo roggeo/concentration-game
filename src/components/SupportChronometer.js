@@ -1,7 +1,17 @@
+import PropTypes from "prop-types";
 import React from "react";
+import secondsToString from "../utils/secondsToString";
 
-export default function SupportChronometer() {
+function SupportChronometer({
+    liveTimer
+}) {
     return <div>
-        <span>15 min</span>
+        <span>{secondsToString(liveTimer)}</span>
     </div>
 }
+
+SupportChronometer.propTypes = {
+    liveTimer: PropTypes.number
+}
+
+export default  SupportChronometer;

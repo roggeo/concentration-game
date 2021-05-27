@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SupportChronometer from "./SupportChronometer";
 import SupportInputSizeBoard from "./SupportInputSizeBoard";
 import SupportNewBoard from "./SupportNewBoard";
@@ -13,6 +13,7 @@ function SupportBar() {
 
     const [cardsOptions, setCardsOptions] = useContext(CardContext);
     const [timesShowingCards, setTimesShowingCards] = useState(3);
+    const [liveTimer, setLiveTimer] = useState(0);
 
     const onResizeBoard = (h = 0, w = 0) => () => {
         setCardsOptions(getCardsMatrix(h, w));
@@ -28,13 +29,22 @@ function SupportBar() {
         }
         const cards = configureSelectionAllCards(cardsOptions, true);
         setCardsOptions(cards);
-        setTimeout(() => setCardsOptions(cardsOptions), 5000);
+        setTimeout(() => setCardsOptions(cardsOptions), 1000);
         setTimesShowingCards(timesShowingCards-1);
     }
 
+    useEffect(() => {
+        const t = setTimeout(() => {
+            setLiveTimer(liveTimer + 1);
+        }, 1000);
+        return () => {
+            clearTimeout(t);
+        }
+    }, [liveTimer]);
+
     return <div>
         <SupportInputSizeBoard onResizeBoard={onResizeBoard}/>
-        <SupportChronometer/>
+        <SupportChronometer liveTimer={liveTimer}/>
         <SupportNewBoard onNewBoard={onNewBoard}/>
         <SupportShowCards onShowCards={onShowCards} times={timesShowingCards}/>
     </div>
